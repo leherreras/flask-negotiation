@@ -4,27 +4,22 @@ Flask-Negotiation
 
 Provides better content negotiation for flask.
 """
-import setuptools
-from setuptools import setup
+from setuptools import setup, find_packages
+from codecs import open
+from os import path
 
-requires = [
-    'Flask',
-]
 
-setup(name='Flask-Negotiation',
-      version='0.1.9',
-      url='http://blog.hardtack.me/',
-      author='GunWoo Choi',
-      author_email='6566gun@gmail.com',
+with open(path.join(path.abspath(path.dirname(__file__)), 'requirements.txt')) as f:
+    requirements = [item for item in f.read().split('\n') if item]
+
+setup(
+      name='Flask-Negotiation',
+      version='1.0.0',
       description='Better content negotiation for flask',
-      long_description=__doc__,
-      packages=setuptools.find_packages(exclude=('tests', )),
-      include_package_data=True,
-      zip_safe=False,
-      platforms='any',
-      install_requires=requires,
-      classifiers=[
-          'Development Status :: 4 - Beta',
-          'Environment :: Web Environment',
-          'Intended Audience :: Developers',
-      ])
+      url='https://git.cytac.org/mat/flask-negociation.git',
+      author='Luis Carlos Herrera (CTAS-MAT)',
+      author_email='luis.herrera@cyxtera.com',
+      packages=find_packages(exclude=["tests.*", "tests"]),
+      install_requires=requirements,
+      zip_safe=False
+)

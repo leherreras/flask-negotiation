@@ -5,6 +5,10 @@ HTTP media type
 """
 
 
+def cmp(a, b):
+    return (a > b) - (a < b)
+
+
 def parse_header(s):
     """Parses parameter header
     """
@@ -47,7 +51,7 @@ class MediaType(object):
         self.main_type, sep, self.sub_type = self.media_type.partition('/')
 
     def __contains__(self, other):
-        for k, v in self.params.iteritems():
+        for k, v in self.params.items():
             if k != 'q' and other.params.get(k, None) != v:
                 return False
         if self.main_type == '*' and self.sub_type == '*':
@@ -59,8 +63,8 @@ class MediaType(object):
         return self == other
 
     def __eq__(self, other):
-        if isinstance(other, basestring):
-            return unicode(self) == other
+        if isinstance(other, str):
+            return str(self) == other
         return (self.main_type == other.main_type and
                 self.sub_type == other.sub_type)
 
@@ -68,12 +72,12 @@ class MediaType(object):
         return '<media type:' + str(self) + '>'
 
     def __str__(self):
-        return unicode(self).encode('utf-8')
+        return str(self).encode('utf-8')
 
     def __unicode__(self):
         return u'; '.join([u'%s/%s' % (self.main_type, self.sub_type)] +
                           [u'%s=%s' % (k, v)
-                           for k, v in self.params.iteritems()])
+                           for k, v in self.params.items()])
 
     def __cmp__(self, other):
         return cmp(float(self.quality),
@@ -105,7 +109,7 @@ def best_renderer(renderers, media_types):
     for media_type in media_types:
         for renderer in renderers:
             choosen = renderer.choose_media_type(media_type)
-            if not choosen is None:
+            if choosen is not None:
                 choosen_items.append((renderer, choosen, media_type))
     if not choosen_items:
         return None, None

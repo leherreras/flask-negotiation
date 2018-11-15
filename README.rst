@@ -10,7 +10,7 @@ Install with pip
 
 ::
 
-    pip install Flask-Negotiation
+    pip install git+ssh://git@git.cytac.org/mat/flask-negotiation.git
 
 Usage
 -----
@@ -56,7 +56,3 @@ And you can render data
 
 It automatically choose renderer by ``Accept`` HTTP Field, and render to
 ``Response`` object.
-
-For more details, see `documentation`_.
-
-.. _documentation: https://flask-negotiation.readthedocs.org/en/latest/

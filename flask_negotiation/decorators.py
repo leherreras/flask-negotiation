@@ -6,8 +6,8 @@ from functools import wraps
 from flask import request
 from werkzeug.exceptions import NotAcceptable
 
-from renderers import Renderer
-from media_type import acceptable_media_types, MediaType, choose_media_type
+from .renderers import Renderer
+from .media_type import acceptable_media_types, MediaType, choose_media_type
 
 
 def provides(media_type, *args, **kwargs):
