@@ -70,7 +70,7 @@ class MediaType(object):
                 self.sub_type == other.sub_type)
 
     def __repr__(self):
-        return '<media type:' + str(self) + '>'
+        return str(self.media_type)
 
     def __str__(self):
         return str(self).encode('utf-8')

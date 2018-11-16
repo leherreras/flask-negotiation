@@ -90,7 +90,7 @@ class FunctionRenderer(Renderer):
     def __init__(self, fn, media_types):
         super(FunctionRenderer, self).__init__()
         self.fn = fn
-        self.__media_types__ = map(str, media_types)
+        self.__media_types__ = list(map(str, media_types))
 
     def render(self, data, template=None, ctx=None):
         return self.fn(data, template=template, ctx=ctx)
