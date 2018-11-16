@@ -73,7 +73,7 @@ class MediaType(object):
         return str(self.media_type)
 
     def __str__(self):
-        return str(self).encode('utf-8')
+        return str(self.media_type)
 
     def __unicode__(self):
         return u'; '.join([u'%s/%s' % (self.main_type, self.sub_type)] +
