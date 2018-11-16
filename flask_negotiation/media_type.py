@@ -3,6 +3,7 @@
 
 HTTP media type
 """
+from functools import cmp_to_key
 
 
 def cmp(a, b):
@@ -124,7 +125,7 @@ def best_renderer(renderers, media_types):
                        media_types.index(media_type1))
         return cmp(media_type1.quality, media_type2.quality)
 
-    return tuple(sorted(choosen_items, cmp=cmp_types)[-1][:2])
+    return tuple(sorted(choosen_items, key=cmp_to_key(cmp_types))[-1][:2])
 
 
 def choose_media_type(acceptables, media_types):
@@ -150,7 +151,7 @@ def choose_media_type(acceptables, media_types):
                        acceptables.index(acceptable1))
         return cmp(acceptable.quality, acceptable.quality)
 
-    return sorted(choosen, cmp=cmp_types)[-1][0]
+    return sorted(choosen, key=cmp_to_key(cmp_types))[-1][0]
 
 
 def can_accept(acceptables, media_types):
