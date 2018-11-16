@@ -100,7 +100,7 @@ def acceptable_media_types(request):
     else:
         li = ['*/*']
     li = li or ['*/*']
-    return sorted(map(MediaType, li), reverse=True)
+    return map(MediaType, li)
 
 
 def best_renderer(renderers, media_types):
